@@ -1,0 +1,71 @@
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed.
+# Called by "git commit" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message if
+# it wants to stop the commit.
+#
+# To enable this hook, rename this file to "pre-commit".
+
+ex=0
+okResult="OK"
+
+jscsPath="node_modules/.bin/jscs"
+jscsConfigPath=".hooks/js/.jscsrc"
+
+shouldIgnoreJsPath=".hooks/js/shouldignore.js"
+
+#printf "hook START \n"
+
+if [ ! -d "node_modules" ]; then
+    printf "node_modules are required for pre-commit hook \nplease run 'npm install' in the root of repo \n"
+    exit 1
+fi
+
+listOfFiles=$(git diff --cached --name-only --diff-filter=ACMR) #get list of files
+
+# split file names only by newline symbol
+IFS=$'\n'
+for changedFile in $listOfFiles
+do
+    #printf "checking:$changedFile \n"
+
+    filename=$(basename "$changedFile")
+    extension="${filename##*.}"
+
+    if [ $extension == $filename ]
+    then
+        extension=""
+    fi
+
+    #printf "extension = $extension \n"
+
+    case "$extension" in
+    "js")
+        result=$(node $shouldIgnoreJsPath $changedFile)
+
+        if [ "$result" == "false" ]
+        then
+            printf "> call jscs for $changedFile\n"
+            result=$($jscsPath --max-old-space-size=4096 $changedFile -c $jscsConfigPath)
+
+            if [ "$result" != "" ]
+            then
+                printf "$result \n"
+                ex=1
+            else
+                printf "$okResult \n"
+            fi
+        else
+            printf "> ignored: $changedFile \n"
+        fi
+
+        printf "\n"
+        ;;
+    esac
+
+done
+
+#printf "hook END"
+
+exit $ex
