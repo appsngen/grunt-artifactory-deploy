@@ -1,0 +1,27 @@
+{
+    "name": "grunt-artifactory-deploy",
+    "version": "0.0.1",
+    "description": "Grunt task for deploying artifacts to JFrog Artifactory",
+    "author": {
+        "name": "appsngen",
+        "email": "developers@appsngen.com",
+        "url": "https://www.appsngen.com"
+    },
+    "main": "tasks/deploy.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/appsngen/grunt-artifactory-deploy.git"
+    },
+    "keywords": [
+        "gruntplugin"
+    ],
+    "author": "",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/appsngen/grunt-artifactory-deploy/issues"
+    },
+    "homepage": "https://github.com/appsngen/grunt-artifactory-deploy#readme"
+}
