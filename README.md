@@ -43,3 +43,16 @@ Target file path at repository.
 Type: `String`
 
 Path to target `.tgz` file for deploy.
+
+### Example
+
+```js
+artdeploy: {
+    options: {
+        apiKey: "pasteYourAPIkey",
+        repositoryPath: "https://youorganization.jfrog.io/yourorganization/repository-name",
+        targetPath: "your-awesome-stuff.tgz",
+        packagePath: "place/where/you/store/your-awesome-stuff.tgz"
+    }
+}
+```
