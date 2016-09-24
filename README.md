@@ -24,22 +24,22 @@ Task targets, files and options may be specified according to the Grunt [Configu
 
 ### Options
 
-#### api_key
+#### apiKey
 Type: `String`  
 
 API key from your account.
 
-#### repository_path
+#### repositoryPath
 Type: `String`
 
 Url to artifact repository.
 
-#### target_path
+#### targetPath
 Type: `String`
 
 Target file path at repository.
 
-#### package_path
+#### packagePath
 Type: `String`
 
 Path to target `.tgz` file for deploy.
