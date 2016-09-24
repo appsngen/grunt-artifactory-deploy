@@ -17,7 +17,29 @@ grunt.loadNpmTasks('grunt-artifactory-deploy');
 ```
 
 
-## Concat task
+## Artifactory deploy task
 _Run this task with the `grunt artdeploy` command._
 
 Task targets, files and options may be specified according to the Grunt [Configuring tasks](http://gruntjs.com/configuring-tasks) guide.
+
+### Options
+
+#### api_key
+Type: `String`  
+
+API key from your account.
+
+#### repository_path
+Type: `String`
+
+Url to artifact repository.
+
+#### target_path
+Type: `String`
+
+Target file path at repository.
+
+#### package_path
+Type: `String`
+
+Path to target `.tgz` file for deploy.
