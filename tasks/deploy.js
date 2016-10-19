@@ -9,9 +9,10 @@ module.exports = function (grunt) {
         var done = this.async();
         var options = this.options();
         var urlObj = parse(options.repositoryPath);
+        var targetPath = options.targetPath;
         var requestOptions = {
             hostname: urlObj.hostname,
-            path: urlObj.pathname + '/' + options.targetPath,
+            path: urlObj.pathname + '/' + targetPath + '/' + options.version + '/' + targetPath + '.tgz',
             method: 'PUT',
             headers: {
                 'X-JFrog-Art-Api': options.apiKey

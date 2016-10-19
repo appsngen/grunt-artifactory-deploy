@@ -1,6 +1,6 @@
 {
   "name": "grunt-artifactory-deploy",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Grunt task for deploying artifacts to JFrog Artifactory",
   "author": "",
   "main": "tasks/deploy.js",
